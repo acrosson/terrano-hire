@@ -12,7 +12,7 @@ export default function Home() {
             Hire Skilled Workers. Offload your Busy Work. Save Money.
           </h1>
           <p className="max-w-md text-lg leading-8 text-zinc-800">
-            Give us the work you don't want to do. We'll do it fast and accurate guranteed.
+            Give us the work you don't want to do. We'll do it fast and accurate guaranteed.
           </p>
           <Button href="https://cal.com/crosson/30min">
             Schedule Call
