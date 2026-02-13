@@ -1,0 +1,36 @@
+import { Header } from '../../components/header/Header'
+import { Footer } from '../../components/footer/Footer'
+import { VSLHero } from '../../components/vsl-hero/VSLHero'
+import { CostInHouse } from '../../components/cost-in-house/CostInHouse'
+import { WhatEADoes } from '../../components/what-ea-does/WhatEADoes'
+import { HumanMachine } from '../../components/human-machine/HumanMachine'
+import { SupportedIntegrations } from '../../components/supported-integrations/SupportedIntegrations'
+import { Pricing } from '../../components/pricing/Pricing'
+import { Guarantee } from '../../components/guarantee/Guarantee'
+import { FAQ } from '../../components/faq/FAQ'
+
+export default function OfficeAdministratorPage() {
+  return (
+    <div className="flex min-h-screen flex-col bg-white font-sans">
+      <Header />
+      <main className="flex-1">
+        <VSLHero
+          preheading="Office Administrator Service"
+          heading="Get an Office Administrator. Offload your Busy Work. Save Money."
+          postHeading="Give us the work you don't want to do. We'll do it fast with guaranteed accuracy."
+          videoUrl=""
+          ctaText="Schedule Call"
+          ctaHref="https://cal.com/crosson/30min"
+        />
+        <CostInHouse />
+        <WhatEADoes assistantLabel="OA" />
+        <HumanMachine />
+        <SupportedIntegrations assistantLabel="OA" />
+        <Pricing assistantLabel="OA" />
+        <Guarantee assistantLabel="office administrator" />
+        <FAQ assistantLabel="OA" />
+      </main>
+      <Footer />
+    </div>
+  )
+}
