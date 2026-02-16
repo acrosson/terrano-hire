@@ -13,6 +13,11 @@ export function Footer() {
                   Home
                 </Link>
               </li>
+              <li>
+                <Link href="/contact" className="text-sm text-zinc-300 hover:text-white transition-colors">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
