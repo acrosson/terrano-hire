@@ -14,7 +14,7 @@ export default function Home() {
           <p className="max-w-md text-lg leading-8 text-zinc-800">
             Give us the work you don't want to do. We'll do it fast and accurate guaranteed.
           </p>
-          <Button href="https://cal.com/crosson/30min">
+          <Button href="https://cal.com/terrano/30min">
             Schedule Call
           </Button>
         </div>

@@ -1,0 +1,41 @@
+import { Header } from '../components/header/Header'
+import { Footer } from '../components/footer/Footer'
+import { Button } from '../components/button/Button'
+import Image from 'next/image'
+
+export default function SchedulePage() {
+  return (
+    <div className="flex min-h-screen flex-col bg-white font-sans">
+      <Header />
+      <main className="flex-1 w-full max-w-6xl mx-auto px-16 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 className="text-4xl font-semibold text-black mb-6">
+              Awesome! Now Schedule Your Onboarding Call
+            </h1>
+            <div className="space-y-4 mb-8">
+              <p className="text-lg text-zinc-800 leading-relaxed">
+                The onboarding call may take up to 1 hour to complete. During this call, we will ask you to walk through your business, workflows, and tools.
+              </p>
+              <p className="text-lg text-zinc-800 leading-relaxed">
+                This comprehensive discussion helps us understand your unique needs and ensures we can match you with the perfect assistant who will seamlessly integrate into your operations.
+              </p>
+            </div>
+            <Button href="https://cal.com/terrano/onboarding">
+              Schedule Onboarding Call
+            </Button>
+          </div>
+          <div className="relative w-full min-h-[400px]">
+            <Image
+              src="/images/part_human_part_machine.jpg"
+              alt="Onboarding call"
+              fill
+              className="object-cover rounded-lg"
+            />
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </div>
+  )
+}
