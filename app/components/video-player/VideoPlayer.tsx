@@ -3,7 +3,16 @@
 import { useState, useRef, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 
-const ReactPlayer = dynamic(() => import('react-player'), { ssr: false })
+const ReactPlayer = dynamic(
+  () => import('react-player'),
+  { ssr: false }
+) as React.ComponentType<{
+  url: string
+  width?: string
+  height?: string
+  controls?: boolean
+  playing?: boolean
+}>
 
 interface VideoPlayerProps {
   url: string
@@ -113,7 +122,6 @@ export function VideoPlayer({ url }: VideoPlayerProps) {
         </p>
       </div>
       <div className="absolute top-0 left-0 w-full h-full">
-        {/* @ts-ignore - react-player types issue with dynamic import */}
         <ReactPlayer
           url={url}
           width="100%"
