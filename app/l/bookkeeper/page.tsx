@@ -8,6 +8,7 @@ import { SupportedIntegrations } from '../../components/supported-integrations/S
 import { AccountingIntegrations } from '../../components/accounting-integrations/AccountingIntegrations'
 import { Pricing } from '../../components/pricing/Pricing'
 import { Guarantee } from '../../components/guarantee/Guarantee'
+import { HowItWorks } from '../../components/how-it-works/HowItWorks'
 import { FAQ } from '../../components/faq/FAQ'
 
 const bookkeepingTasks = [
@@ -33,8 +34,8 @@ export default function BookkeeperPage() {
           heading="Get a Bookkeeper. Offload your Busy Work. Save Money."
           postHeading="Give us the work you don't want to do. We'll do it fast with guaranteed accuracy."
           videoUrl=""
-          ctaText="Schedule Call"
-          ctaHref="https://cal.com/crosson/30min"
+          ctaText="Get Started"
+          ctaHref="#pricing"
         />
         <CostInHouse />
         <WhatEADoes assistantLabel="Bookkeeper" tasks={bookkeepingTasks} />
@@ -43,6 +44,7 @@ export default function BookkeeperPage() {
         <AccountingIntegrations />
         <Pricing assistantLabel="Bookkeeper" />
         <Guarantee assistantLabel="bookkeeper" />
+        <HowItWorks />
         <FAQ assistantLabel="Bookkeeper" />
       </main>
       <Footer />

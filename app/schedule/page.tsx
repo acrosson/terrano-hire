@@ -7,7 +7,7 @@ export default function SchedulePage() {
   return (
     <div className="flex min-h-screen flex-col bg-white font-sans">
       <Header />
-      <main className="flex-1 w-full max-w-6xl mx-auto px-16 py-16">
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 md:px-16 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl font-semibold text-black mb-6">

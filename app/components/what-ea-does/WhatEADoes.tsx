@@ -20,7 +20,7 @@ const defaultTasks = [
 
 export function WhatEADoes({ tasks = defaultTasks, assistantLabel = 'EA' }: WhatEADoesProps) {
   return (
-    <section className="w-full bg-white py-16 px-16">
+    <section className="w-full bg-white py-16 px-4 md:px-16">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-semibold text-black text-center mb-12">
           What Your {assistantLabel} Does

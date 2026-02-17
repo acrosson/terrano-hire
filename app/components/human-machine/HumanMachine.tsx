@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export function HumanMachine() {
   return (
-    <section className="w-full bg-white py-16 px-16">
+    <section className="w-full bg-white py-16 px-4 md:px-16">
       <div className="max-w-6xl mx-auto">
         <div className="grid gap-8 md:grid-cols-2 items-center">
           <div className="relative w-full min-h-[320px]">

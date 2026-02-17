@@ -16,7 +16,7 @@ export default async function PrivacyPage() {
   return (
     <div className="flex min-h-screen flex-col bg-white font-sans">
       <Header />
-      <main className="flex-1 w-full max-w-4xl mx-auto px-16 py-16">
+      <main className="flex-1 w-full max-w-4xl mx-auto px-4 md:px-16 py-16">
         <MarkdownContent content={content} />
       </main>
       <Footer />

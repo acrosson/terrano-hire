@@ -16,21 +16,21 @@ interface PricingProps {
 export function Pricing({
   starterPrice = 169,
   proPrice = 279,
-  normalEAPrice = 1395,
+  normalEAPrice = 5998,
   starterCtaText = 'Get Starter',
   proCtaText = 'Get Pro',
-  starterCtaHref = 'https://cal.com/crosson/30min',
-  proCtaHref = 'https://cal.com/crosson/30min',
+  starterCtaHref = 'https://buy.stripe.com/cNi7sLcnf2c5g52d8feQM00',
+  proCtaHref = 'https://buy.stripe.com/7sY7sL5YR2c5bOM7NVeQM01',
   assistantLabel = 'EA',
 }: PricingProps) {
-  const starterSavings = normalEAPrice - starterPrice
-  const starterSavingsPercentage = Math.round((starterSavings / normalEAPrice) * 100)
-  const proSavings = normalEAPrice - proPrice
-  const proSavingsPercentage = Math.round((proSavings / normalEAPrice) * 100)
+  const starterSavings = Math.round((normalEAPrice / 4.3) - starterPrice)
+  const starterSavingsPercentage = Math.round((starterSavings / (normalEAPrice / 4.3)) * 100)
+  const proSavings = Math.round((normalEAPrice / 4.3) - proPrice)
+  const proSavingsPercentage = Math.round((proSavings / (normalEAPrice / 4.3)) * 100)
 
   return (
-    <section className="w-full bg-white py-16 px-16">
-      <div className="max-w-6xl mx-auto">
+    <section className="w-full bg-white py-16 px-4 md:px-16">
+      <div className="max-w-6xl mx-auto" id="pricing">
         <h2 className="text-3xl font-semibold text-black text-center mb-12">
           Pricing
         </h2>
@@ -38,11 +38,11 @@ export function Pricing({
           <div className="p-8 border-2 border-zinc-300 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               <FaDollarSign className="text-xl text-zinc-600" />
-              <h3 className="text-xl font-semibold text-zinc-600">Normal {assistantLabel}</h3>
+              <h3 className="text-xl font-semibold text-zinc-600">Traditional {assistantLabel}</h3>
             </div>
             <p className="text-4xl font-bold text-black mb-4">
               <span className="line-through">${normalEAPrice.toLocaleString()}</span>
-              <span className="text-lg font-normal text-zinc-600">/week</span>
+              <span className="text-lg font-normal text-zinc-600">/month</span>
             </p>
             <ul className="space-y-2 text-zinc-800 mb-6">
               <li>• Full-time employee costs</li>

@@ -7,6 +7,7 @@ import { HumanMachine } from '../../components/human-machine/HumanMachine'
 import { SupportedIntegrations } from '../../components/supported-integrations/SupportedIntegrations'
 import { Pricing } from '../../components/pricing/Pricing'
 import { Guarantee } from '../../components/guarantee/Guarantee'
+import { HowItWorks } from '../../components/how-it-works/HowItWorks'
 import { FAQ } from '../../components/faq/FAQ'
 
 export default function ExecutiveAssistantPage() {
@@ -19,8 +20,8 @@ export default function ExecutiveAssistantPage() {
           heading="Get an Executive Assistant. Offload your Busy Work. Save Money."
           postHeading="Give us the work you don't want to do. We'll do it fast with guaranteed accuracy."
           videoUrl=""
-          ctaText="Schedule Call"
-          ctaHref="https://cal.com/crosson/30min"
+          ctaText="Get Started"
+          ctaHref="#pricing"
         />
         <CostInHouse />
         <WhatEADoes />
@@ -28,6 +29,7 @@ export default function ExecutiveAssistantPage() {
         <SupportedIntegrations />
         <Pricing />
         <Guarantee />
+        <HowItWorks />
         <FAQ />
       </main>
       <Footer />

@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-white font-sans">
       <Header />
-      <main className="flex flex-1 w-full max-w-3xl mx-auto flex-col items-center justify-center py-32 px-16 bg-white">
+      <main className="flex flex-1 w-full max-w-3xl mx-auto flex-col items-center justify-center py-32 px-4 md:px-16 bg-white">
         <div className="flex flex-col items-center gap-6 text-center">
           <h1 className="max-w-2xl text-3xl font-semibold leading-10 tracking-tight text-black sm:text-4xl">
             Hire Skilled Workers. Offload your Busy Work. Save Money.

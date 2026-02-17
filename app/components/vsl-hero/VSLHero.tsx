@@ -15,11 +15,11 @@ export function VSLHero({
   heading,
   postHeading,
   videoUrl,
-  ctaText = 'Schedule Call',
-  ctaHref = 'https://cal.com/crosson/30min'
+  ctaText = 'Get Started',
+  ctaHref = '#pricing'
 }: VSLHeroProps) {
   return (
-    <section className="w-full bg-white py-16 px-16">
+    <section className="w-full bg-white py-16 px-4 md:px-16">
       <div className="max-w-4xl mx-auto flex flex-col items-center gap-8 text-center">
         {preheading && (
           <p className="text-base font-medium text-zinc-600 uppercase tracking-wide">

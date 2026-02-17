@@ -6,7 +6,7 @@ interface GuaranteeProps {
 
 export function Guarantee({ assistantLabel = 'executive assistant' }: GuaranteeProps) {
   return (
-    <section className="w-full bg-zinc-50 py-16 px-16">
+    <section className="w-full bg-zinc-50 py-16 px-4 md:px-16">
       <div className="max-w-4xl mx-auto text-center">
         <div className="flex items-center justify-center gap-3 mb-6">
           <HiShieldCheck className="text-4xl text-black" />

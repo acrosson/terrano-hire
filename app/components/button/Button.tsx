@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 
 interface ButtonProps {
@@ -14,6 +16,20 @@ export function Button({ href, children, variant = 'primary', className = '' }: 
     : 'bg-white text-black border border-black hover:bg-zinc-50'
 
   const isExternal = href.startsWith('http://') || href.startsWith('https://')
+  const isHashLink = href.startsWith('#')
+
+  function handleHashClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (isHashLink) {
+      e.preventDefault()
+      const targetId = href.substring(1)
+      const element = document.getElementById(targetId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        // Update URL without triggering scroll
+        window.history.pushState(null, '', href)
+      }
+    }
+  }
 
   if (isExternal) {
     return (
@@ -21,6 +37,18 @@ export function Button({ href, children, variant = 'primary', className = '' }: 
         href={href}
         target="_blank"
         rel="noopener noreferrer"
+        className={`${baseStyles} ${variantStyles} ${className}`}
+      >
+        {children}
+      </a>
+    )
+  }
+
+  if (isHashLink) {
+    return (
+      <a
+        href={href}
+        onClick={handleHashClick}
         className={`${baseStyles} ${variantStyles} ${className}`}
       >
         {children}

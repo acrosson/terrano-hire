@@ -19,7 +19,7 @@ interface SupportedIntegrationsProps {
 
 export function SupportedIntegrations({ assistantLabel = 'EA' }: SupportedIntegrationsProps) {
   return (
-    <section className="w-full bg-white py-16 px-16">
+    <section className="w-full bg-white py-16 px-4 md:px-16">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-semibold text-black text-center mb-4">
           Experts in All the Tools
