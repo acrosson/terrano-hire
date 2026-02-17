@@ -19,8 +19,8 @@ export default function ExecutiveAssistantPage() {
           preheading="Executive Assistant Service"
           heading="Get an Executive Assistant. Offload your Busy Work. Save Money."
           postHeading="Give us the work you don't want to do. We'll do it fast with guaranteed accuracy."
-          videoUrl=""
-          ctaText="Get Started"
+          videoUrl="https://terrano-ai.s3.us-east-1.amazonaws.com/prod/assets/videos/executive_assistant_vsl.mp4"
+          ctaText="Get My Assistant"
           ctaHref="#pricing"
         />
         <CostInHouse />
