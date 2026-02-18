@@ -27,7 +27,17 @@ export default function ExecutiveAssistantPage() {
         <WhatEADoes />
         <HumanMachine />
         <SupportedIntegrations />
-        <Pricing />
+        <Pricing
+          corePrice={79}
+          coreHours={10}
+          growthPrice={139}
+          growthHours={20}
+          proPrice={229}
+          proHours={40}
+          coreCtaHref="https://buy.stripe.com/9B600j0Exg2Vg527NVeQM06"
+          growthCtaHref="https://buy.stripe.com/5kQfZhfzrg2V0644BJeQM07"
+          proCtaHref="https://buy.stripe.com/cNicN59b3181g526JReQM08"
+        />
         <Guarantee />
         <HowItWorks />
         <FAQ />

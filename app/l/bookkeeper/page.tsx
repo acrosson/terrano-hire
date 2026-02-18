@@ -43,9 +43,16 @@ export default function BookkeeperPage() {
         <SupportedIntegrations assistantLabel="Bookkeeper" />
         <AccountingIntegrations />
         <Pricing
-        assistantLabel="Bookkeeper"
-        starterCtaHref="https://buy.stripe.com/bJe14n0ExaIB2ec6JReQM02"
-        proCtaHref="https://buy.stripe.com/14AaEX72VeYRcSQecjeQM03"
+          assistantLabel="Bookkeeper"
+          corePrice={49}
+          coreHours={5}
+          growthPrice={79}
+          growthHours={10}
+          proPrice={139}
+          proHours={20}
+          coreCtaHref="https://buy.stripe.com/bJe14n0ExaIB2ec6JReQM02"
+          growthCtaHref="https://buy.stripe.com/00w9ATbjb8At9GEb07eQM05"
+          proCtaHref="https://buy.stripe.com/14AaEX72VeYRcSQecjeQM03"
         />
         <Guarantee assistantLabel="bookkeeper" />
         <HowItWorks />

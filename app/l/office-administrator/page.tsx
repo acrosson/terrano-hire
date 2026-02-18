@@ -27,7 +27,18 @@ export default function OfficeAdministratorPage() {
         <WhatEADoes assistantLabel="OA" />
         <HumanMachine />
         <SupportedIntegrations assistantLabel="OA" />
-        <Pricing assistantLabel="OA" />
+        <Pricing
+          assistantLabel="OA"
+          corePrice={79}
+          coreHours={10}
+          growthPrice={129}
+          growthHours={20}
+          proPrice={199}
+          proHours={30}
+          coreCtaHref="https://buy.stripe.com/cNi7sLcnf2c5g52d8feQM00"
+          growthCtaHref="https://buy.stripe.com/7sY7sLevn2c51a8ecjeQM04"
+          proCtaHref="https://buy.stripe.com/7sY7sL5YR2c5bOM7NVeQM01"
+        />
         <Guarantee assistantLabel="office administrator" />
         <HowItWorks />
         <FAQ assistantLabel="OA" />
