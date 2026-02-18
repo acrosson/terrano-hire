@@ -20,7 +20,6 @@ export default function SchedulePage() {
         'send_to': 'AW-16979578926/jzBwCIyJ7_obEK6gv6A_',
         'value': 1.0,
         'currency': 'USD',
-        'transaction_id': ''
       })
     }
   }, [])
