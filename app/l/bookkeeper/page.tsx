@@ -33,7 +33,7 @@ export default function BookkeeperPage() {
           preheading="Bookkeeper Service"
           heading="Get a Bookkeeper. Offload your Busy Work. Save Money."
           postHeading="Give us the work you don't want to do. We'll do it fast with guaranteed accuracy."
-          videoUrl="https://terrano-ai.s3.us-east-1.amazonaws.com/prod/assets/videos/executive_assistant_vsl.mp4"
+          videoUrl="https://terrano-ai.s3.us-east-1.amazonaws.com/prod/assets/videos/bookkeeper_vsl.mp4"
           ctaText="Get My Bookkeeper"
           ctaHref="#pricing"
         />
@@ -42,7 +42,11 @@ export default function BookkeeperPage() {
         <HumanMachine />
         <SupportedIntegrations assistantLabel="Bookkeeper" />
         <AccountingIntegrations />
-        <Pricing assistantLabel="Bookkeeper" />
+        <Pricing
+        assistantLabel="Bookkeeper"
+        starterCtaHref="https://buy.stripe.com/bJe14n0ExaIB2ec6JReQM02"
+        proCtaHref="https://buy.stripe.com/14AaEX72VeYRcSQecjeQM03"
+        />
         <Guarantee assistantLabel="bookkeeper" />
         <HowItWorks />
         <FAQ assistantLabel="Bookkeeper" />
