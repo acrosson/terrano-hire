@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { HashScroll } from "./components/hash-scroll/HashScroll";
+import { PostHogProvider } from "./components/posthog-provider/PostHogProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -62,8 +63,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <HashScroll />
-        {children}
+        <PostHogProvider>
+          <HashScroll />
+          {children}
+        </PostHogProvider>
       </body>
     </html>
   );

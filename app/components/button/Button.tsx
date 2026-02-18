@@ -10,7 +10,8 @@ interface ButtonProps {
 }
 
 export function Button({ href, children, variant = 'primary', className = '' }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-medium transition-colors'
+  const isFullWidth = className.includes('w-full')
+  const baseStyles = `${isFullWidth ? 'flex' : 'inline-flex'} items-center justify-center rounded-full px-6 py-3 text-base font-medium transition-colors`
   const variantStyles = variant === 'primary'
     ? 'bg-black text-white hover:bg-zinc-800'
     : 'bg-white text-black border border-black hover:bg-zinc-50'

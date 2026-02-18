@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import dynamic from 'next/dynamic'
+import posthog from 'posthog-js'
 
 const ReactPlayer = dynamic(
   () => import('react-player'),
@@ -12,6 +13,9 @@ const ReactPlayer = dynamic(
   height?: string
   controls?: boolean
   playing?: boolean
+  onPlay?: () => void
+  onProgress?: (state: { played: number; playedSeconds: number; loaded: number; loadedSeconds: number }) => void
+  onEnded?: () => void
 }>
 
 interface VideoPlayerProps {
@@ -23,6 +27,8 @@ export function VideoPlayer({ url }: VideoPlayerProps) {
   const [showOverlay, setShowOverlay] = useState(true)
   const [isPlaying, setIsPlaying] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const progressMilestones = useRef<Set<number>>(new Set())
+  const hasTrackedStart = useRef(false)
 
   const isMP4 = url.endsWith('.mp4') || url.includes('.mp4?')
 
@@ -51,6 +57,48 @@ export function VideoPlayer({ url }: VideoPlayerProps) {
     }
   }, [isMP4, audioEnabled])
 
+  // Track video progress and completion for MP4 videos
+  useEffect(() => {
+    if (isMP4 && videoRef.current && audioEnabled) {
+      const video = videoRef.current
+
+      const handleTimeUpdate = () => {
+        if (video.duration) {
+          const progress = (video.currentTime / video.duration) * 100
+          const milestones = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
+
+          milestones.forEach((milestone) => {
+            if (progress >= milestone && !progressMilestones.current.has(milestone)) {
+              progressMilestones.current.add(milestone)
+              if (typeof window !== 'undefined') {
+                posthog.capture('web_vsl_video_progress', {
+                  video_url: url,
+                  progress_percent: milestone
+                })
+              }
+            }
+          })
+        }
+      }
+
+      const handleEnded = () => {
+        if (typeof window !== 'undefined') {
+          posthog.capture('web_vsl_video_completed', {
+            video_url: url
+          })
+        }
+      }
+
+      video.addEventListener('timeupdate', handleTimeUpdate)
+      video.addEventListener('ended', handleEnded)
+
+      return () => {
+        video.removeEventListener('timeupdate', handleTimeUpdate)
+        video.removeEventListener('ended', handleEnded)
+      }
+    }
+  }, [isMP4, audioEnabled, url])
+
   function handleVideoClick() {
     if (!audioEnabled) {
       // First tap: enable audio and play from beginning
@@ -61,6 +109,14 @@ export function VideoPlayer({ url }: VideoPlayerProps) {
         setAudioEnabled(true)
         setShowOverlay(false)
         setIsPlaying(true)
+        
+        // Track video started
+        if (!hasTrackedStart.current && typeof window !== 'undefined') {
+          posthog.capture('web_vsl_video_started', {
+            video_url: url
+          })
+          hasTrackedStart.current = true
+        }
       }
     } else {
       // Subsequent taps: toggle play/pause
@@ -128,6 +184,37 @@ export function VideoPlayer({ url }: VideoPlayerProps) {
           height="100%"
           controls
           playing={false}
+          onPlay={() => {
+            if (typeof window !== 'undefined' && !hasTrackedStart.current) {
+              posthog.capture('web_vsl_video_started', {
+                video_url: url
+              })
+              hasTrackedStart.current = true
+            }
+          }}
+          onProgress={(state) => {
+            if (typeof window !== 'undefined') {
+              const progress = state.played * 100
+              const milestones = [25, 50, 75]
+
+              milestones.forEach((milestone) => {
+                if (progress >= milestone && !progressMilestones.current.has(milestone)) {
+                  progressMilestones.current.add(milestone)
+                  posthog.capture('web_vsl_video_progress', {
+                    video_url: url,
+                    progress_percent: milestone
+                  })
+                }
+              })
+            }
+          }}
+          onEnded={() => {
+            if (typeof window !== 'undefined') {
+              posthog.capture('web_vsl_video_completed', {
+                video_url: url
+              })
+            }
+          }}
         />
       </div>
     </div>

@@ -129,9 +129,11 @@ export function Pricing({
                     </p>
                   </>
                 )}
-                <Button href={plan.ctaHref || '#'}>
-                  {plan.ctaText || `Get ${plan.name}`}
-                </Button>
+                <div className="w-full">
+                  <Button href={plan.ctaHref || '#'} className="w-full">
+                    {plan.ctaText || `Get ${plan.name}`}
+                  </Button>
+                </div>
               </div>
             )
           })}
