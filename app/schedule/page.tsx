@@ -16,10 +16,15 @@ declare global {
 export default function SchedulePage() {
   useEffect(() => {
     if (typeof window !== 'undefined' && window.gtag) {
+      // Extract session_id from URL query parameters (from Stripe payment link)
+      const urlParams = new URLSearchParams(window.location.search)
+      const sessionId = urlParams.get('session_id') || ''
+      
       window.gtag('event', 'conversion', {
         'send_to': 'AW-16979578926/jzBwCIyJ7_obEK6gv6A_',
         'value': 1.0,
         'currency': 'USD',
+        'transaction_id': sessionId
       })
     }
   }, [])
