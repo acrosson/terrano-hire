@@ -1,9 +1,30 @@
+'use client'
+
+import { useEffect } from 'react'
 import { Header } from '../components/header/Header'
 import { Footer } from '../components/footer/Footer'
 import { Button } from '../components/button/Button'
 import Image from 'next/image'
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void
+    dataLayer?: any[]
+  }
+}
+
 export default function SchedulePage() {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-16979578926/jzBwCIyJ7_obEK6gv6A_',
+        'value': 1.0,
+        'currency': 'USD',
+        'transaction_id': ''
+      })
+    }
+  }, [])
+
   return (
     <div className="flex min-h-screen flex-col bg-white font-sans">
       <Header />
