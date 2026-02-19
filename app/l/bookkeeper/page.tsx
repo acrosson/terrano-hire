@@ -1,6 +1,7 @@
 import { Header } from '../../components/header/Header'
 import { Footer } from '../../components/footer/Footer'
 import { VSLHero } from '../../components/vsl-hero/VSLHero'
+import { SayGoodbyeTo } from '../../components/say-goodbye-to/SayGoodbyeTo'
 import { CostInHouse } from '../../components/cost-in-house/CostInHouse'
 import { WhatEADoes } from '../../components/what-ea-does/WhatEADoes'
 import { HumanMachine } from '../../components/human-machine/HumanMachine'
@@ -37,6 +38,7 @@ export default function BookkeeperPage() {
           ctaText="Get My Bookkeeper"
           ctaHref="#pricing"
         />
+        <SayGoodbyeTo text="Say Goodbye To Bookkeeping Stress" />
         <CostInHouse />
         <WhatEADoes assistantLabel="Bookkeeper" tasks={bookkeepingTasks} />
         <HumanMachine />

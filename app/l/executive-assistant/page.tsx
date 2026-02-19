@@ -1,6 +1,7 @@
 import { Header } from '../../components/header/Header'
 import { Footer } from '../../components/footer/Footer'
 import { VSLHero } from '../../components/vsl-hero/VSLHero'
+import { SayGoodbyeTo } from '../../components/say-goodbye-to/SayGoodbyeTo'
 import { CostInHouse } from '../../components/cost-in-house/CostInHouse'
 import { WhatEADoes } from '../../components/what-ea-does/WhatEADoes'
 import { HumanMachine } from '../../components/human-machine/HumanMachine'
@@ -23,6 +24,7 @@ export default function ExecutiveAssistantPage() {
           ctaText="Get My Assistant"
           ctaHref="#pricing"
         />
+        <SayGoodbyeTo text="Say Goodbye To Overwhelming Workloads" />
         <CostInHouse />
         <WhatEADoes />
         <HumanMachine />
