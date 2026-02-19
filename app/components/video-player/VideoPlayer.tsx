@@ -149,7 +149,10 @@ export function VideoPlayer({ url }: VideoPlayerProps) {
             src={url}
             className="w-full h-full object-contain"
             preload="auto"
+            muted={!audioEnabled}
             loop={audioEnabled}
+            playsInline
+            autoPlay
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
           >
