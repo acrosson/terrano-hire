@@ -32,6 +32,8 @@ export function SayGoodbyeTo({ text }: SayGoodbyeToProps) {
               muted
               loop
               playsInline
+              autoPlay
+              preload="auto"
             />
           </div>
           <div className="flex flex-col gap-6">
