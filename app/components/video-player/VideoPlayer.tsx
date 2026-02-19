@@ -36,16 +36,14 @@ export function VideoPlayer({ url }: VideoPlayerProps) {
     if (isMP4 && videoRef.current && !audioEnabled) {
       const video = videoRef.current
       
-      // Autoplay first 10 seconds muted in a loop
+      // Set up muted state and time update handler for looping between 2-10 seconds
       video.muted = true
-      video.play().catch(() => {
-        // Autoplay might be blocked, that's okay
-      })
+      video.currentTime = 1
 
       const handleTimeUpdate = () => {
-        // Continuously loop the first 10 seconds
+        // Continuously loop between 2-10 seconds when playing
         if (video.currentTime >= 10) {
-          video.currentTime = 0
+          video.currentTime = 1
         }
       }
 
@@ -101,10 +99,10 @@ export function VideoPlayer({ url }: VideoPlayerProps) {
 
   function handleVideoClick() {
     if (!audioEnabled) {
-      // First tap: enable audio and play from beginning
+      // First tap: enable audio and play from 2 seconds
       if (videoRef.current) {
         videoRef.current.muted = false
-        videoRef.current.currentTime = 0
+        videoRef.current.currentTime = 2
         videoRef.current.play()
         setAudioEnabled(true)
         setShowOverlay(false)
@@ -152,16 +150,15 @@ export function VideoPlayer({ url }: VideoPlayerProps) {
             muted={!audioEnabled}
             loop={audioEnabled}
             playsInline
-            autoPlay
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
           >
             Your browser does not support the video tag.
           </video>
           {showOverlay && (
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <p className="text-white text-xl font-semibold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] pointer-events-auto">
-                Tap for Sound 🔉
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none bg-black/50">
+              <p className="text-white text-3xl font-semibold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] pointer-events-auto">
+                Tap to Play 🔉
               </p>
             </div>
           )}
