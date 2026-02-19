@@ -10,13 +10,38 @@ export function SayGoodbyeTo({ text }: SayGoodbyeToProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    if (videoRef.current) {
-      const video = videoRef.current
-      video.muted = true
-      video.loop = true
+    const video = videoRef.current
+    if (!video) return
+
+    video.muted = true
+    video.loop = true
+
+    const handleCanPlay = () => {
       video.play().catch(() => {
         // Autoplay might be blocked, that's okay
       })
+    }
+
+    const handleLoadedData = () => {
+      video.play().catch(() => {
+        // Autoplay might be blocked, that's okay
+      })
+    }
+
+    // Try to play when video can start playing
+    video.addEventListener('canplay', handleCanPlay)
+    video.addEventListener('loadeddata', handleLoadedData)
+
+    // Also try immediately if video is already loaded
+    if (video.readyState >= 2) {
+      video.play().catch(() => {
+        // Autoplay might be blocked, that's okay
+      })
+    }
+
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay)
+      video.removeEventListener('loadeddata', handleLoadedData)
     }
   }, [])
 
