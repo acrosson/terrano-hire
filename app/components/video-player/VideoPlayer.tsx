@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import posthog from 'posthog-js'
 
 const ReactPlayer = dynamic(
@@ -133,15 +134,16 @@ export function VideoPlayer({ url }: VideoPlayerProps) {
   if (isMP4) {
     return (
       <div className="w-full aspect-video bg-zinc-100 rounded-lg overflow-hidden relative">
-        <div
-          className="absolute top-0 left-0 right-0 z-10 px-4 py-2"
-          style={{ backgroundColor: '#1a5eff', borderTopLeftRadius: '0.5rem', borderTopRightRadius: '0.5rem' }}
-        >
-          <p className="text-white text-sm font-medium text-center">
-            🔊 WATCH THIS FIRST (TURN AUDIO ON)
-          </p>
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/vsl/executive_assistant_vsl_cover.jpg"
+            alt="Video cover"
+            fill
+            className="object-cover"
+            unoptimized
+          />
         </div>
-        <div className="relative w-full h-full cursor-pointer" onClick={handleVideoClick}>
+        <div className="relative w-full h-full cursor-pointer z-10" onClick={handleVideoClick}>
           <video
             ref={videoRef}
             src={url}
@@ -162,6 +164,14 @@ export function VideoPlayer({ url }: VideoPlayerProps) {
               </p>
             </div>
           )}
+        </div>
+        <div
+          className="absolute top-0 left-0 right-0 z-20 px-4 py-2"
+          style={{ backgroundColor: '#1a5eff', borderTopLeftRadius: '0.5rem', borderTopRightRadius: '0.5rem' }}
+        >
+          <p className="text-white text-sm font-medium text-center">
+            🔊 WATCH THIS FIRST (TURN AUDIO ON)
+          </p>
         </div>
       </div>
     )
