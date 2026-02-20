@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import posthog from 'posthog-js'
 import { Button } from '../button/Button'
@@ -10,6 +11,9 @@ interface VSLHeroProps {
   preheading?: string
   heading: string
   postHeading?: string
+  altPreheading?: string
+  altHeading?: string
+  altPostHeading?: string
   videoUrl?: string
   ctaText?: string
   ctaHref?: string
@@ -19,15 +23,38 @@ export function VSLHero({
   preheading,
   heading,
   postHeading,
+  altPreheading,
+  altHeading,
+  altPostHeading,
   videoUrl,
   ctaText = 'Get Started',
   ctaHref = '#pricing'
 }: VSLHeroProps) {
+  const [useAltCopy, setUseAltCopy] = useState(false)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && posthog) {
+      // Wait for PostHog feature flags to be loaded
+      posthog.onFeatureFlags(() => {
+        const flagValue = posthog.getFeatureFlag('show_alt_hero_copy')
+        console.log('flagValue', flagValue)
+        if (flagValue === 'test') {
+          setUseAltCopy(true)
+        }
+      })
+    }
+  }, [])
+
+  const displayPreheading = useAltCopy && altPreheading ? altPreheading : preheading
+  const displayHeading = useAltCopy && altHeading ? altHeading : heading
+  const displayPostHeading = useAltCopy && altPostHeading ? altPostHeading : postHeading
+
   function handleCtaClick() {
     if (typeof window !== 'undefined') {
       posthog.capture('web_hero_cta_clicked', {
         cta_text: ctaText,
-        cta_href: ctaHref
+        cta_href: ctaHref,
+        variant: useAltCopy ? 'test' : 'control'
       })
     }
   }
@@ -45,17 +72,17 @@ export function VSLHero({
             unoptimized
           />
         </div>
-        {preheading && (
+        {displayPreheading && (
           <p className="text-base font-medium text-zinc-600 uppercase tracking-wide mb-2">
-            {preheading}
+            {displayPreheading}
           </p>
         )}
         <h1 className="text-4xl font-semibold leading-tight tracking-tight text-black sm:text-5xl mb-4">
-          {heading}
+          {displayHeading}
         </h1>
-        {postHeading && (
+        {displayPostHeading && (
           <p className="text-lg leading-8 text-zinc-800 max-w-2xl mb-8">
-            {postHeading}
+            {displayPostHeading}
           </p>
         )}
         {videoUrl && <VideoPlayer url={videoUrl} />}
