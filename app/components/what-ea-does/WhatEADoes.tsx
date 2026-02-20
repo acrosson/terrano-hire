@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { HiCheckCircle } from 'react-icons/hi'
 
 interface WhatEADoesProps {
@@ -22,7 +23,17 @@ export function WhatEADoes({ tasks = defaultTasks, assistantLabel = 'EA' }: What
   return (
     <section className="w-full bg-white py-16 px-4 md:px-16">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-semibold text-black text-center mb-12">
+      <div className="flex justify-center mb-12">
+          <Image
+            src="/images/review_rating.png"
+            alt="Review rating"
+            width={220}
+            height={48}
+            className="mx-auto"
+            unoptimized
+          />
+        </div>
+        <h2 className="text-3xl font-semibold text-black text-center mb-6">
           What Your {assistantLabel} Does
         </h2>
         <div className="grid gap-4 md:grid-cols-2">

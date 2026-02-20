@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Button } from '../button/Button'
 import { HiPlay } from 'react-icons/hi'
 import { VideoPlayer } from '../video-player/VideoPlayer'
@@ -24,6 +25,16 @@ export function VSLHero({
   return (
     <section className="w-full bg-white pt-8 pb-16 px-4 md:px-16">
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
+        <div className="mb-6">
+          <Image
+            src="/images/review_rating.png"
+            alt="Review rating"
+            width={220}
+            height={48}
+            className="mx-auto"
+            unoptimized
+          />
+        </div>
         {preheading && (
           <p className="text-base font-medium text-zinc-600 uppercase tracking-wide mb-2">
             {preheading}
