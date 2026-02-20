@@ -27,7 +27,7 @@ export function SayGoodbyeTo({ text }: SayGoodbyeToProps) {
   const imageSrc = `/images/woman-waving/woman_waving_frame_${frameNumber}.jpg`
 
   return (
-    <section className="w-full bg-zinc-100 py-16 px-4 md:px-16">
+    <section className="w-full bg-white py-16 px-4 md:px-16">
       <div className="max-w-6xl mx-auto">
         <div className="grid gap-8 md:grid-cols-2 items-center">
           <div className="relative w-full aspect-video overflow-hidden rounded-lg">
