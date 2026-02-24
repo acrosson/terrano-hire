@@ -23,7 +23,7 @@ export function Testimonials() {
 
   return (
     <>
-      <section className="w-full bg-white py-16 px-4 md:px-16">
+      <section id="testimonials" className="w-full bg-white py-16 px-4 md:px-16 scroll-mt-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-black text-center mb-12">
             Hear What Others Have To Say
