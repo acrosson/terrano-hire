@@ -8,8 +8,8 @@ import Image from 'next/image'
 
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void
-    dataLayer?: any[]
+    gtag?: (command: string, ...args: unknown[]) => void
+    dataLayer?: unknown[]
   }
 }
 

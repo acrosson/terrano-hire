@@ -95,7 +95,7 @@ export function Pricing({
               <li>• Office space required</li>
             </ul>
           </div>
-          {plans.map((plan, index) => {
+          {plans.map((plan) => {
             const { savings, savingsPercentage } = calculateSavings(plan.price)
             const isPro = plan.name === 'Pro'
             return (
@@ -125,7 +125,7 @@ export function Pricing({
                       </p>
                     </div>
                     <p className="text-sm text-zinc-700 mb-6">
-                      That's 1/5 the price of a normal {assistantLabel}
+                      That&apos;s 1/5 the price of a normal {assistantLabel}
                     </p>
                   </>
                 )}

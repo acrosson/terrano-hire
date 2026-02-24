@@ -15,8 +15,8 @@ export function Guarantee({ assistantLabel = 'executive assistant' }: GuaranteeP
           </h2>
         </div>
         <p className="text-lg text-zinc-800 max-w-2xl mx-auto">
-          We're so confident in our service that we offer a 100% money-back guarantee.
-          If you're not completely satisfied with your {assistantLabel}, we'll refund
+          We&apos;re so confident in our service that we offer a 100% money-back guarantee.
+          If you&apos;re not completely satisfied with your {assistantLabel}, we&apos;ll refund
           your money—no questions asked.
         </p>
       </div>

@@ -15,7 +15,7 @@ export function HumanMachine() {
           </div>
           <div className="flex flex-col gap-6">
             <h2 className="text-4xl font-semibold leading-tight tracking-tight text-black sm:text-5xl">
-              Human when you need it. Technology when you don't.
+              Human when you need it. Technology when you don&apos;t.
             </h2>
             <p className="text-lg leading-8 text-zinc-800">
               You get the human touch where it matters — and AI speed where it counts.

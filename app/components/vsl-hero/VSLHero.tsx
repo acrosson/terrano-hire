@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import posthog from 'posthog-js'
 import { Button } from '../button/Button'
-import { HiPlay } from 'react-icons/hi'
 import { VideoPlayer } from '../video-player/VideoPlayer'
 
 interface VSLHeroProps {

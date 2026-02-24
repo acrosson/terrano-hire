@@ -11,7 +11,7 @@ export default function ContactPage() {
             Contact Us
           </h1>
           <p className="text-lg text-zinc-800 leading-relaxed mb-4">
-            We'd love to hear from you. If you have any questions, concerns, or feedback, please don't hesitate to reach out.
+            We&apos;d love to hear from you. If you have any questions, concerns, or feedback, please don&apos;t hesitate to reach out.
           </p>
           <p className="text-lg text-zinc-800 leading-relaxed">
             You can email us at{' '}
@@ -21,7 +21,7 @@ export default function ContactPage() {
             >
               support@terrano.ai
             </a>
-            {' '}and we'll get back to you as soon as possible.
+            {' '}and we&apos;ll get back to you as soon as possible.
           </p>
         </div>
       </main>

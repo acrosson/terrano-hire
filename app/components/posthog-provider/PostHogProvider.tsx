@@ -21,14 +21,14 @@ export function PostHogProvider({ children }: PostHogProviderProps) {
               posthog.debug()
               // Expose posthog globally for testing in browser console
               if (typeof window !== 'undefined') {
-                ;(window as any).posthog = posthog
+                ;(window as unknown as Window & { posthog: typeof posthog }).posthog = posthog
               }
             }
           }
         })
         // Also expose posthog immediately for testing
         if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
-          ;(window as any).posthog = posthog
+          ;(window as unknown as Window & { posthog: typeof posthog }).posthog = posthog
         }
       }
     }

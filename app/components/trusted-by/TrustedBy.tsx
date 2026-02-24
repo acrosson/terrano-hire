@@ -15,7 +15,7 @@ export function TrustedBy() {
     <section className="w-full bg-white py-16 px-4 md:px-16 bg-zinc-100">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-2xl font-semibold text-black text-center mb-12">
-          Trusted By Operators Who've Worked At These Companies
+          Trusted By Operators Who&apos;ve Worked At These Companies
         </h2>
         <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
           {companyLogos.map((logo, index) => (

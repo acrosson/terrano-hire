@@ -20,14 +20,14 @@ export default function OfficeAdministratorPage() {
       <main className="flex-1">
         <VSLHero
           preheading="Office Administrator Service"
-          heading="Get an Office Administrator. Offload your Busy Work. Save Money."
+          heading="Get an Office Administrator. Offload your Busy Work. 10x Faster & 1/5th the Cost."
           postHeading="Give us the work you don't want to do. We'll do it fast with guaranteed accuracy."
           altPreheading="AI Supercharged Office Administrator Service"
-          altHeading="Get an AI Supercharged Office Administrator. Offload your Busy Work. Save Money."
+          altHeading="Get an AI Supercharged Office Administrator. Offload your Busy Work. 10x Faster & 1/5th the Cost."
           altPostHeading="Give us the work you don't want to do. We'll do it fast with AI-powered accuracy."
           videoUrl="https://terrano-ai.s3.us-east-1.amazonaws.com/prod/assets/videos/executive_assistant_vsl_720p.mp4"
-          ctaText="Get My Office Admin"
-          ctaHref="#pricing"
+          ctaText="Try For Free"
+          ctaHref="https://cal.com/terrano/free-trial"
         />
         <TrustedBy />
         <Testimonials />
