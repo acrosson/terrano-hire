@@ -5,6 +5,12 @@ import Image from 'next/image'
 
 const testimonials = [
   {
+    name: 'Kevin Huang',
+    company: 'Founder, Technology Startup',
+    videoUrl: 'https://terrano-ai.s3.us-east-1.amazonaws.com/prod/assets/videos/testimonial_video_3.mp4',
+    coverUrl: 'https://terrano-ai.s3.us-east-1.amazonaws.com/prod/assets/testimonial_3_video_cover.jpg',
+  },
+  {
     name: 'Jenny Crosson',
     company: 'Co-Founder, Golf Cart Manufacturing',
     videoUrl: 'https://terrano-ai.s3.us-east-1.amazonaws.com/prod/assets/videos/testimonial_video_1.mp4',
