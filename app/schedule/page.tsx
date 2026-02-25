@@ -40,7 +40,7 @@ export default function SchedulePage() {
             </h1>
             <div className="space-y-4 mb-8">
               <p className="text-lg text-zinc-800 leading-relaxed">
-                The onboarding call may take up to 1 hour to complete. During this call, we will ask you to walk through your business, workflows, and tools.
+                The onboarding call may take up to 30 minutes to complete. During this call, we will ask you to walk through your business, workflows, and tools.
               </p>
               <p className="text-lg text-zinc-800 leading-relaxed">
                 This comprehensive discussion helps us understand your unique needs and ensures we can match you with the perfect assistant who will seamlessly integrate into your operations.
