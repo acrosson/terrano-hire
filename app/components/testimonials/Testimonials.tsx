@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { usePostHog } from 'posthog-js/react'
 
 const testimonials = [
   {
@@ -26,6 +27,16 @@ const testimonials = [
 
 export function Testimonials() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null)
+  const posthog = usePostHog()
+
+  function handleVideoOpen(t: typeof testimonials[number]) {
+    setActiveVideo(t.videoUrl)
+    posthog.capture('web_testimonial_video_started', {
+      video_url: t.videoUrl,
+      person_name: t.name,
+      person_company: t.company,
+    })
+  }
 
   return (
     <>
@@ -38,7 +49,7 @@ export function Testimonials() {
             {testimonials.map((t, i) => (
               <div key={i} className="flex flex-col items-center gap-4 w-full sm:w-64">
                 <button
-                  onClick={() => setActiveVideo(t.videoUrl)}
+                  onClick={() => handleVideoOpen(t)}
                   className="relative w-full aspect-square rounded-2xl overflow-hidden group cursor-pointer"
                 >
                   <Image
