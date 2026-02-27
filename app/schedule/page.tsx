@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Header } from '../components/header/Header'
 import { Footer } from '../components/footer/Footer'
@@ -14,7 +14,7 @@ declare global {
   }
 }
 
-export default function SchedulePage() {
+function ScheduleContent() {
   const searchParams = useSearchParams()
   const serviceType = searchParams.get('service_type')
   const calUrl = serviceType
@@ -26,7 +26,7 @@ export default function SchedulePage() {
       // Extract session_id from URL query parameters (from Stripe payment link)
       const urlParams = new URLSearchParams(window.location.search)
       const sessionId = urlParams.get('session_id') || ''
-      
+
       window.gtag('event', 'conversion', {
         'send_to': 'AW-16979578926/jzBwCIyJ7_obEK6gv6A_',
         'value': 1.0,
@@ -69,5 +69,28 @@ export default function SchedulePage() {
       </main>
       <Footer />
     </div>
+  )
+}
+
+function ScheduleFallback() {
+  return (
+    <div className="flex min-h-screen flex-col bg-white font-sans">
+      <Header />
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 md:px-16 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="h-64 bg-zinc-100 rounded-lg animate-pulse" />
+          <div className="h-[400px] bg-zinc-100 rounded-lg animate-pulse" />
+        </div>
+      </main>
+      <Footer />
+    </div>
+  )
+}
+
+export default function SchedulePage() {
+  return (
+    <Suspense fallback={<ScheduleFallback />}>
+      <ScheduleContent />
+    </Suspense>
   )
 }
