@@ -1,15 +1,15 @@
-import { ApplyForm } from '../components/apply-form/ApplyForm'
+import { ApplyForm } from '../../components/apply-form/ApplyForm'
 
 const questions = [
   {
     id: 'task_type',
-    question: 'What type of work would you like help with?',
+    question: 'What bookkeeping work do you need help with?',
     options: [
-      'Admin tasks & scheduling',
-      'Email & inbox management',
-      'Research & data entry',
-      'Social media & content',
-      'Multiple of the above',
+      'Accounts payable & receivable',
+      'Invoice creation & tracking',
+      'Bank reconciliation & expense tracking',
+      'Payroll & tax preparation',
+      'All of the above',
     ],
   },
   {
@@ -44,6 +44,6 @@ const questions = [
   },
 ]
 
-export default function ApplyPage() {
-  return <ApplyForm questions={questions} serviceType="Virtual Assistant" />
+export default function ApplyBookkeeperPage() {
+  return <ApplyForm questions={questions} serviceType="Bookkeeping" />
 }

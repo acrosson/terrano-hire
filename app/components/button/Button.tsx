@@ -5,16 +5,20 @@ import Link from 'next/link'
 interface ButtonProps {
   href: string
   children: React.ReactNode
-  variant?: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary' | 'blue' | 'blueOutline'
   className?: string
 }
 
 export function Button({ href, children, variant = 'primary', className = '' }: ButtonProps) {
   const isFullWidth = className.includes('w-full')
   const baseStyles = `${isFullWidth ? 'flex' : 'inline-flex'} items-center justify-center rounded-full px-6 py-3 text-base font-medium transition-colors`
-  const variantStyles = variant === 'primary'
-    ? 'bg-black text-white hover:bg-zinc-800'
-    : 'bg-white text-black border border-black hover:bg-zinc-50'
+  const variantMap = {
+    primary: 'bg-black text-white hover:bg-zinc-800',
+    secondary: 'bg-white text-black border border-black hover:bg-zinc-50',
+    blue: 'bg-[#1a5eff] text-white hover:bg-blue-700',
+    blueOutline: 'bg-white text-[#1a5eff] border border-[#1a5eff] hover:bg-[#e9f1ff]'
+  }
+  const variantStyles = variantMap[variant]
 
   const isExternal = href.startsWith('http://') || href.startsWith('https://')
   const isHashLink = href.startsWith('#')

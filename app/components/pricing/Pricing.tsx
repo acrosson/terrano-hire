@@ -25,6 +25,10 @@ interface PricingProps {
   growthCtaHref?: string
   proCtaHref?: string
   assistantLabel?: string
+  subheading?: string
+  traditionalFreeTrialHref?: string
+  traditionalFreeTrialCtaText?: string
+  traditionalFreeTrialSubtext?: string
 }
 
 export function Pricing({
@@ -42,6 +46,10 @@ export function Pricing({
   growthCtaHref = 'https://buy.stripe.com/7sY7sL5YR2c5bOM7NVeQM01',
   proCtaHref = 'https://buy.stripe.com/7sY7sL5YR2c5bOM7NVeQM01',
   assistantLabel = 'EA',
+  subheading,
+  traditionalFreeTrialHref,
+  traditionalFreeTrialCtaText = 'Get Free Trial',
+  traditionalFreeTrialSubtext = 'Try for one week for free.'
 }: PricingProps) {
   const plans: Plan[] = [
     {
@@ -79,21 +87,45 @@ export function Pricing({
         <h2 className="text-3xl font-semibold text-black text-center mb-12">
           Pricing
         </h2>
+        {subheading && (
+          <p className="text-center text-lg text-zinc-600 max-w-2xl mx-auto mb-12">
+            {subheading}
+          </p>
+        )}
         <div className="grid gap-8 md:grid-cols-4">
           <div className="p-8 border-2 border-zinc-300 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               <FaDollarSign className="text-xl text-zinc-600" />
               <h3 className="text-xl font-semibold text-zinc-600">Traditional {assistantLabel}</h3>
             </div>
-            <p className="text-4xl font-bold text-black mb-4">
-              <span className="line-through">${normalEAPrice.toLocaleString()}</span>
-              <span className="text-lg font-normal text-zinc-600">/month</span>
-            </p>
-            <ul className="space-y-2 text-zinc-800 mb-6">
-              <li>• Full-time employee costs</li>
-              <li>• Benefits and overhead</li>
-              <li>• Office space required</li>
-            </ul>
+            {traditionalFreeTrialHref ? (
+              <>
+                <p className="text-4xl font-bold text-black mb-2">
+                  $0
+                  <span className="text-lg font-normal text-zinc-600">/week</span>
+                </p>
+                <p className="text-base text-zinc-700 mb-6">
+                  {traditionalFreeTrialSubtext}
+                </p>
+                <div className="w-full">
+                  <Button href={traditionalFreeTrialHref} className="w-full">
+                    {traditionalFreeTrialCtaText}
+                  </Button>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="text-4xl font-bold text-black mb-4">
+                  <span className="line-through">${normalEAPrice.toLocaleString()}</span>
+                  <span className="text-lg font-normal text-zinc-600">/month</span>
+                </p>
+                <ul className="space-y-2 text-zinc-800 mb-6">
+                  <li>• Full-time employee costs</li>
+                  <li>• Benefits and overhead</li>
+                  <li>• Office space required</li>
+                </ul>
+              </>
+            )}
           </div>
           {plans.map((plan) => {
             const { savings, savingsPercentage } = calculateSavings(plan.price)

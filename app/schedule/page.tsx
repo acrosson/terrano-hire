@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Header } from '../components/header/Header'
 import { Footer } from '../components/footer/Footer'
 import { Button } from '../components/button/Button'
@@ -14,6 +15,12 @@ declare global {
 }
 
 export default function SchedulePage() {
+  const searchParams = useSearchParams()
+  const serviceType = searchParams.get('service_type')
+  const calUrl = serviceType
+    ? `https://cal.com/terrano/onboarding?service_type=${encodeURIComponent(serviceType)}`
+    : 'https://cal.com/terrano/onboarding'
+
   useEffect(() => {
     if (typeof window !== 'undefined' && window.gtag) {
       // Extract session_id from URL query parameters (from Stripe payment link)
@@ -46,7 +53,7 @@ export default function SchedulePage() {
                 This comprehensive discussion helps us understand your unique needs and ensures we can match you with the perfect assistant who will seamlessly integrate into your operations.
               </p>
             </div>
-            <Button href="https://cal.com/terrano/onboarding">
+            <Button href={calUrl}>
               Schedule Onboarding Call
             </Button>
           </div>

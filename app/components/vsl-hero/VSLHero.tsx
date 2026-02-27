@@ -16,6 +16,7 @@ interface VSLHeroProps {
   videoUrl?: string
   ctaText?: string
   ctaHref?: string
+  applyHref?: string
 }
 
 export function VSLHero({
@@ -27,7 +28,8 @@ export function VSLHero({
   altPostHeading,
   videoUrl,
   ctaText = 'Get Started',
-  ctaHref = '#pricing'
+  ctaHref = '#pricing',
+  applyHref = '/apply'
 }: VSLHeroProps) {
   const [useAltCopy, setUseAltCopy] = useState(false)
   const [showPhotoCTA, setShowPhotoCTA] = useState(false)
@@ -100,7 +102,7 @@ export function VSLHero({
                 We only accept 5% of applicants. Check if you&apos;re eligible.
               </p>
               <div onClick={handleCtaClick}>
-                <Button href="/apply">
+                <Button href={applyHref}>
                   Apply For 1 Week Free Trial
                 </Button>
               </div>
