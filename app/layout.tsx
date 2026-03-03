@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Terrano - Hire an Executive Assistant",
-  description: "Terrano is a platform that helps you hire the best executive assistants. We are a team of experienced executive assistants who are dedicated to helping you get the work done that you don't want to do.",
+  title: "Terrano - Hire Skilled Workers",
+  description: "Terrano is a platform that helps you hire the best skilled workers. We are a team of experienced skilled workers who are dedicated to helping you get the work done that you don't want to do.",
 };
 
 export default function RootLayout({
