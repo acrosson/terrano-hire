@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { HashScroll } from "./components/hash-scroll/HashScroll";
 import { PostHogProvider } from "./components/posthog-provider/PostHogProvider";
+import { HeroUIClientProvider } from "./components/heroui-provider/HeroUIClientProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,10 +64,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <PostHogProvider>
-          <HashScroll />
-          {children}
-        </PostHogProvider>
+        <HeroUIClientProvider>
+          <PostHogProvider>
+            <HashScroll />
+            {children}
+          </PostHogProvider>
+        </HeroUIClientProvider>
       </body>
     </html>
   );

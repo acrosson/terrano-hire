@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const companyLogos = [
+const row1Logos = [
   { src: '/images/companies_logos/rbc_logo.png', width: 40, height: 54 },
   { src: '/images/companies_logos/polymath_logo.png', width: 80, height: 40 },
   { src: '/images/companies_logos/mudflap_logo.png', width: 120, height: 40 },
@@ -10,6 +10,12 @@ const companyLogos = [
   { src: '/images/companies_logos/food_rocket_logo.png', width: 80, height: 40 },
 ]
 
+const row2Logos = [
+  { src: '/images/companies_logos/tesla_logo.png', width: 50, height: 60 },
+  { src: '/images/companies_logos/paypal_logo.png', width: 100, height: 40 },
+  { src: '/images/companies_logos/ny_times_logo.png', width: 120, height: 40 },
+]
+
 export function TrustedBy() {
   return (
     <section className="w-full bg-white py-16 px-4 md:px-16 bg-zinc-100">
@@ -17,19 +23,35 @@ export function TrustedBy() {
         <h2 className="text-2xl font-semibold text-black text-center mb-12">
           Trusted By Operators Who&apos;ve Worked At These Companies
         </h2>
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-          {companyLogos.map((logo, index) => (
-            <div key={index} className="flex items-center justify-center">
-              <Image
-                src={logo.src}
-                alt={`Company logo ${index + 1}`}
-                width={logo.width}
-                height={logo.height}
-                className="object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-                unoptimized
-              />
-            </div>
-          ))}
+        <div className="flex flex-col items-center gap-8">
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+            {row1Logos.map((logo, index) => (
+              <div key={index} className="flex items-center justify-center">
+                <Image
+                  src={logo.src}
+                  alt={`Company logo ${index + 1}`}
+                  width={logo.width}
+                  height={logo.height}
+                  className="object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                  unoptimized
+                />
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+            {row2Logos.map((logo, index) => (
+              <div key={index} className="flex items-center justify-center">
+                <Image
+                  src={logo.src}
+                  alt={`Company logo ${index + 1}`}
+                  width={logo.width}
+                  height={logo.height}
+                  className="object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                  unoptimized
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
