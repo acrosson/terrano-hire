@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { Header } from '../../components/header/Header'
 import { Footer } from '../../components/footer/Footer'
 import { GetWorkDoneHero } from '../../components/get-work-done-hero/GetWorkDoneHero'
@@ -11,7 +12,9 @@ export default function GetWorkDonePage() {
     <div className="flex min-h-screen flex-col bg-white font-sans">
       <Header />
       <main className="flex-1">
-        <GetWorkDoneHero />
+        <Suspense>
+          <GetWorkDoneHero />
+        </Suspense>
         <TrustedBy />
         <Testimonials />
         <WhyWereBetter />

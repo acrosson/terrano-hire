@@ -2,6 +2,7 @@
 
 import { Textarea, Button, addToast } from '@heroui/react'
 import { useState, useRef } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { TypeAnimation } from 'react-type-animation'
 
 export function GetWorkDoneHero() {
@@ -9,6 +10,7 @@ export function GetWorkDoneHero() {
   const [focused, setFocused] = useState(false)
   const [loading, setLoading] = useState(false)
   const submitRef = useRef<HTMLButtonElement>(null)
+  const searchParams = useSearchParams()
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -35,7 +37,10 @@ export function GetWorkDoneHero() {
       const json = await res.json()
       const taskDraftId = json.data.task_draft_id
 
-      window.location.href = `${process.env.NEXT_PUBLIC_APP_URL}/onboarding?task_draft_id=${taskDraftId}`
+      const forwardedParams = new URLSearchParams(searchParams.toString())
+      forwardedParams.set('task_draft_id', taskDraftId)
+
+      window.location.href = `${process.env.NEXT_PUBLIC_APP_URL}/onboarding?${forwardedParams.toString()}`
     } catch {
       addToast({
         title: 'Something went wrong',
