@@ -25,7 +25,6 @@ export function VSLHero({
   altPreheading,
   altHeading,
   altPostHeading,
-  videoUrl,
   ctaText = 'Get Started',
   ctaHref = '#pricing',
   applyHref = '/apply'

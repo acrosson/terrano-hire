@@ -1,17 +1,50 @@
 'use client'
 
-import { Textarea, Button } from '@heroui/react'
-import { useState } from 'react'
+import { Textarea, Button, addToast } from '@heroui/react'
+import { useState, useRef } from 'react'
 import { TypeAnimation } from 'react-type-animation'
 
 export function GetWorkDoneHero() {
   const [task, setTask] = useState('')
   const [focused, setFocused] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const submitRef = useRef<HTMLButtonElement>(null)
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!task.trim()) return
-    window.location.href = `/apply?task=${encodeURIComponent(task)}`
+
+    if (task.trim().length < 8) {
+      addToast({
+        title: 'A bit more detail please',
+        description: 'Please describe your task in at least 8 characters so we can match you with the right expert.',
+        color: 'danger',
+      })
+      return
+    }
+
+    setLoading(true)
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/task-drafts`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_input_raw: task.trim() }),
+      })
+
+      if (!res.ok) throw new Error('Request failed')
+
+      const json = await res.json()
+      const taskDraftId = json.data.task_draft_id
+
+      window.location.href = `${process.env.NEXT_PUBLIC_APP_URL}/onboarding?task_draft_id=${taskDraftId}`
+    } catch {
+      addToast({
+        title: 'Something went wrong',
+        description: 'We couldn\'t submit your task. Please try again in a moment.',
+        color: 'danger',
+      })
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -90,6 +123,11 @@ export function GetWorkDoneHero() {
               onValueChange={setTask}
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+                  submitRef.current?.click()
+                }
+              }}
               placeholder="Describe what you need help with..."
               minRows={3}
               maxRows={6}
@@ -103,13 +141,18 @@ export function GetWorkDoneHero() {
               aria-label="Describe the work you need done"
             />
           </div>
+          <p className="text-sm text-white/80 text-center">
+            🎁 Get $50 in credits when you start your first task today
+          </p>
           <Button
+            ref={submitRef}
             type="submit"
             color="primary"
             size="lg"
+            isLoading={loading}
             className="w-full font-semibold text-base"
           >
-            Find an Expert
+            Get It Done
           </Button>
         </form>
 
