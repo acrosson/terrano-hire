@@ -1,10 +1,18 @@
-import { Button } from '../button/Button'
+'use client'
 
 interface PromoCtaProps {
   href: string
 }
 
-export function PromoCta({ href }: PromoCtaProps) {
+export function PromoCta({ href: _ }: PromoCtaProps) {
+  function handleClaim() {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    // Wait for scroll to finish before focusing
+    setTimeout(() => {
+      const textarea = document.getElementById('hero-task-input') as HTMLTextAreaElement | null
+      textarea?.focus()
+    }, 600)
+  }
   return (
     <section className="w-full py-20 px-4 relative overflow-hidden bg-white">
       {/* Subtle background tint orbs */}
@@ -58,9 +66,12 @@ export function PromoCta({ href }: PromoCtaProps) {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">
-          <Button href={href} variant="blue">
+          <button
+            onClick={handleClaim}
+            className="inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-medium bg-[#1a5eff] text-white hover:bg-blue-700 transition-colors"
+          >
             Claim Your $50 Credit
-          </Button>
+          </button>
           <p className="text-sm text-zinc-400">
             No credit card required &middot; Cancel anytime
           </p>

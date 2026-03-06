@@ -138,6 +138,7 @@ export function GetWorkDoneHero() {
                 inputWrapper: 'bg-white/95 shadow-lg rounded-[10px] px-4 py-3',
                 input: 'text-zinc-900 text-base placeholder:text-zinc-400',
               }}
+              id="hero-task-input"
               aria-label="Describe the work you need done"
             />
           </div>
