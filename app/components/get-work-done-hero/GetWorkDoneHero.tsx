@@ -5,7 +5,19 @@ import { useState, useRef } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { TypeAnimation } from 'react-type-animation'
 
-export function GetWorkDoneHero() {
+interface GetWorkDoneHeroProps {
+  heading?: string
+  subheading?: string
+  sequences?: (string | number)[]
+  placeholder?: string
+}
+
+export function GetWorkDoneHero({
+  heading = 'The fastest, most reliable way to <u>Get Work Done</u> from experts.',
+  subheading = 'Access skilled workers ready to help you build and scale — without full-time commitment and without high prices.',
+  sequences,
+  placeholder = 'Describe what you need help with...',
+}: GetWorkDoneHeroProps = {}) {
   const [task, setTask] = useState('')
   const [focused, setFocused] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -80,17 +92,18 @@ export function GetWorkDoneHero() {
       <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
 
       <div className="relative z-10 w-full max-w-3xl mx-auto px-6 py-16 flex flex-col items-center text-center gap-6">
-        <h1 className="text-4xl sm:text-5xl font-semibold leading-tight tracking-tight text-white">
-          The fastest, most reliable way to <u>Get Work Done</u> from experts.
-        </h1>
+        <h1
+          className="text-4xl sm:text-5xl font-semibold leading-tight tracking-tight text-white"
+          dangerouslySetInnerHTML={{ __html: heading }}
+        />
 
         <p className="text-lg sm:text-xl text-white/80 max-w-2xl">
-          Access skilled workers ready to help you build and scale — without full-time commitment and without high prices.
+          {subheading}
         </p>
 
         <div className="text-2xl sm:text-3xl font-medium text-white/90 h-10">
           <TypeAnimation
-            sequence={[
+            sequence={sequences ?? [
               'Design a Website',
               2000,
               'Set Up My Google Ads',
@@ -133,7 +146,7 @@ export function GetWorkDoneHero() {
                   submitRef.current?.click()
                 }
               }}
-              placeholder="Describe what you need help with..."
+              placeholder={placeholder}
               minRows={3}
               maxRows={6}
               size="lg"

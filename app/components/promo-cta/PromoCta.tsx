@@ -1,10 +1,6 @@
 'use client'
 
-interface PromoCtaProps {
-  href: string
-}
-
-export function PromoCta({ href: _ }: PromoCtaProps) {
+export function PromoCta() {
   function handleClaim() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
     // Wait for scroll to finish before focusing

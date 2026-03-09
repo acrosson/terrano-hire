@@ -18,7 +18,7 @@ export default function GetWorkDonePage() {
         <TrustedBy />
         <Testimonials />
         <WhyWereBetter />
-        <PromoCta href="/apply" />
+        <PromoCta />
       </main>
       <Footer />
     </div>

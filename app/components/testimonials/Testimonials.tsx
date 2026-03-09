@@ -25,7 +25,11 @@ const testimonials = [
   },
 ]
 
-export function Testimonials() {
+interface TestimonialsProps {
+  showVideos?: boolean
+}
+
+export function Testimonials({ showVideos = true }: TestimonialsProps) {
   const [activeVideo, setActiveVideo] = useState<string | null>(null)
   const posthog = usePostHog()
 
@@ -48,6 +52,7 @@ export function Testimonials() {
           <div className="flex flex-col sm:flex-row gap-10 justify-center items-start">
             {testimonials.map((t, i) => (
               <div key={i} className="flex flex-col items-center gap-4 w-full sm:w-64">
+                {showVideos ? (
                 <button
                   onClick={() => handleVideoOpen(t)}
                   className="relative w-full aspect-square rounded-2xl overflow-hidden group cursor-pointer"
@@ -68,6 +73,17 @@ export function Testimonials() {
                     </div>
                   </div>
                 </button>
+                ) : (
+                <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
+                  <Image
+                    src={t.coverUrl}
+                    alt={`${t.name} testimonial`}
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
+                </div>
+                )}
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, j) => (
                     <svg key={j} className="w-5 h-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
@@ -85,7 +101,7 @@ export function Testimonials() {
         </div>
       </section>
 
-      {activeVideo && (
+      {showVideos && activeVideo && (
         <div
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
           onClick={() => setActiveVideo(null)}
