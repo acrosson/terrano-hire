@@ -13,7 +13,10 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Suspense>
-          <GetWorkDoneHero />
+          <GetWorkDoneHero
+            heading="Launch and Grow Your Brand. Ads and Design Done Right."
+            subheading="From logos and branding to ads and web design, our expert team delivers everything you need to market your business."
+          />
         </Suspense>
         <TrustedBy />
         <Testimonials />

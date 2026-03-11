@@ -16,7 +16,7 @@ For the purposes of these Terms and Conditions:
 
 - Affiliate means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.
 - Country refers to: New York, United States
-- Company (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Terrano Labs, Inc., 199 Water St, New York, NY 10038.
+- Company (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Terrano Labs, Inc., 20 Exchange, New York, NY 10005.
 - Device means any device that can access the Service such as a computer, a cellphone or a digital tablet.
 - Service refers to the Website.
 - Terms and Conditions (also referred as "Terms") mean these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service. This Terms and Conditions agreement has been created with the help of the Free Terms and Conditions Generator.
