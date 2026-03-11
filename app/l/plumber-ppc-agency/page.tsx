@@ -5,7 +5,10 @@ import { GetWorkDoneHero } from '../../components/get-work-done-hero/GetWorkDone
 import { TrustedBy } from '../../components/trusted-by/TrustedBy'
 import { Testimonials } from '../../components/testimonials/Testimonials'
 import { WhyWereBetter } from '../../components/why-were-better/WhyWereBetter'
-import { PromoCta } from '../../components/promo-cta/PromoCta'
+import { PlumberWhatsIncluded } from './PlumberWhatsIncluded'
+import { PlumberHowItWorks } from './PlumberHowItWorks'
+import { PlumberFAQ } from './PlumberFAQ'
+import { PlumberFreeAuditCta } from './PlumberFreeAuditCta'
 
 export default function PlumberPpcAgencyPage() {
   return (
@@ -14,6 +17,7 @@ export default function PlumberPpcAgencyPage() {
       <main className="flex-1">
         <Suspense>
           <GetWorkDoneHero
+            backgroundImage="/images/hero_plumber_man.jpeg"
             heading="Plumber Google Ads That Drive <u>Real Calls and Booked Jobs</u>."
             subheading="Most agencies don't know the plumbing industry — they're guessing at keywords and burning your budget. We specialize in home service businesses, with a proven account structure, an extensive negative keyword list, and conversion-focused landing pages that turn high-intent searches into paying customers."
             sequences={[
@@ -37,9 +41,12 @@ export default function PlumberPpcAgencyPage() {
           />
         </Suspense>
         <TrustedBy />
+        <PlumberWhatsIncluded />
+        <PlumberHowItWorks />
         <Testimonials showVideos={false} />
         <WhyWereBetter />
-        <PromoCta />
+        <PlumberFAQ />
+        <PlumberFreeAuditCta />
       </main>
       <Footer />
     </div>
