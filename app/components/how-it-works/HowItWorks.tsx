@@ -1,38 +1,52 @@
 import { HiCheckCircle, HiClipboardList, HiCalendar, HiSparkles } from 'react-icons/hi'
+import { IconType } from 'react-icons'
 
-export function HowItWorks() {
-  const steps = [
-    {
-      number: 1,
-      title: 'Choose Your Plan',
-      description: 'Select the plan that best fits your needs—Starter for 20 hours per week or Pro for 40 hours per week.',
-      icon: HiCheckCircle
-    },
-    {
-      number: 2,
-      title: 'Submit Your Application',
-      description: 'Fill out a quick application form to help us understand your business needs and requirements.',
-      icon: HiClipboardList
-    },
-    {
-      number: 3,
-      title: 'Schedule Your Onboarding Call',
-      description: 'Book a 1-hour onboarding call where we\'ll walk through your business, workflows, and tools together.',
-      icon: HiCalendar
-    },
-    {
-      number: 4,
-      title: 'Go Live With Your Assistant',
-      description: 'Start working with your dedicated assistant within 24-48 hours after your onboarding call.',
-      icon: HiSparkles
-    }
-  ]
+interface HowItWorksStep {
+  number: number
+  title: string
+  description: string
+  icon: IconType
+}
+
+interface HowItWorksProps {
+  steps?: HowItWorksStep[]
+  title?: string
+}
+
+const defaultSteps: HowItWorksStep[] = [
+  {
+    number: 1,
+    title: 'Choose Your Plan',
+    description: 'Select the plan that best fits your needs—Starter for 20 hours per week or Pro for 40 hours per week.',
+    icon: HiCheckCircle
+  },
+  {
+    number: 2,
+    title: 'Submit Your Application',
+    description: 'Fill out a quick application form to help us understand your business needs and requirements.',
+    icon: HiClipboardList
+  },
+  {
+    number: 3,
+    title: 'Schedule Your Onboarding Call',
+    description: 'Book a 1-hour onboarding call where we\'ll walk through your business, workflows, and tools together.',
+    icon: HiCalendar
+  },
+  {
+    number: 4,
+    title: 'Go Live With Your Assistant',
+    description: 'Start working with your dedicated assistant within 24-48 hours after your onboarding call.',
+    icon: HiSparkles
+  }
+]
+
+export function HowItWorks({ steps = defaultSteps, title = 'How It Works' }: HowItWorksProps) {
 
   return (
     <section className="w-full bg-white py-16 px-4 md:px-16">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-semibold text-black text-center mb-12">
-          How It Works
+          {title}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step) => {
