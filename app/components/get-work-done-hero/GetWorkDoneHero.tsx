@@ -10,6 +10,7 @@ interface GetWorkDoneHeroProps {
   subheading?: string
   sequences?: (string | number)[]
   placeholder?: string
+  backgroundImage?: string
 }
 
 export function GetWorkDoneHero({
@@ -17,6 +18,7 @@ export function GetWorkDoneHero({
   subheading = 'Access skilled workers ready to help you build and scale — without full-time commitment and without high prices.',
   sequences,
   placeholder = 'Describe what you need help with...',
+  backgroundImage = '/images/hero_two_people_working.jpg',
 }: GetWorkDoneHeroProps = {}) {
   const [task, setTask] = useState('')
   const [focused, setFocused] = useState(false)
@@ -80,16 +82,15 @@ export function GetWorkDoneHero({
     `}</style>
     <section className="w-full flex justify-center px-4 pt-0 pb-12">
       <div className="relative w-full max-w-6xl min-h-[480px] flex items-center overflow-hidden rounded-2xl">
-      {/* Background: dark gradient placeholder — replace src with a real image URL */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/images/hero_two_people_working.jpg')`,
+          backgroundImage: `url('${backgroundImage}')`,
         }}
         aria-hidden="true"
       />
       {/* Dark overlay so text is readable over any photo */}
-      <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
+      <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
 
       <div className="relative z-10 w-full max-w-3xl mx-auto px-6 py-16 flex flex-col items-center text-center gap-6">
         <h1
