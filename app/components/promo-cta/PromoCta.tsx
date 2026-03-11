@@ -52,13 +52,13 @@ export function PromoCta() {
               backgroundClip: 'text',
             }}
           >
-            $50 Towards
+            $20 Towards
           </span>{' '}
           Your First Task
         </h2>
 
         <p className="text-lg max-w-xl text-zinc-500">
-          Start your first task on us. No contracts, no risk — just results. Sign up today and we&apos;ll apply $50 credit to your account instantly.
+          Start your first task on us. No contracts, no risk — just results. Sign up today and we&apos;ll apply $20 credit to your account instantly.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">
@@ -66,7 +66,7 @@ export function PromoCta() {
             onClick={handleClaim}
             className="inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-medium bg-[#1a5eff] text-white hover:bg-blue-700 transition-colors"
           >
-            Claim Your $50 Credit
+            Claim Your $20 Credit
           </button>
           <p className="text-sm text-zinc-400">
             No credit card required &middot; Cancel anytime

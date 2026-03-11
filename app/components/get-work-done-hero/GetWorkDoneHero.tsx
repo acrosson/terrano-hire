@@ -162,7 +162,7 @@ export function GetWorkDoneHero({
             />
           </div>
           <p className="text-sm text-white/80 text-center">
-            🎁 Get $50 in credits when you start your first task today
+            🎁 Get $20 in credits when you start your first task today
           </p>
           <Button
             ref={submitRef}
